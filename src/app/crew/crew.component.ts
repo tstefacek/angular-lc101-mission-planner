@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CrewComponent implements OnInit {
   memberBeingEdited: object = null;
+
   crew: object[] = [
     {name: "Eileen Collins", firstMission: false},
     {name: "Mae Jemison", firstMission: false},
@@ -19,7 +20,13 @@ export class CrewComponent implements OnInit {
   }
 
   add(memberName: string, isFirst: boolean) {
-    this.crew.push({name: memberName, firstMission: isFirst});
+    if (this.crew["name"].includes(memberName)){
+      alert("Crew member has already been added.")
+    }
+    else{
+      this.crew.push({name: memberName, firstMission: isFirst});
+    }
+    
   }
 
   remove(member: object) {
